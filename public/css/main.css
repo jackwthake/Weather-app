@@ -1,0 +1,25 @@
+#main-div {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+input[type="text"] {
+  height: 40px;
+  font-size: 20px;
+}
+
+.label, .label-danger {
+  position: absolute;
+  top: 95%;
+  left: 47%;
+  height: 25px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#submit-weather {
+  height: 40px;
+  font-size: 20px;
+  font-weight: 400;
+}

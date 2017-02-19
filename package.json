@@ -1,0 +1,16 @@
+{
+  "name": "star-wars-app",
+  "version": "1.0.0",
+  "description": "A simple Star Wars app for fans",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app debug",
+    "start": "node app"
+  },
+  "author": "Jack Thake",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.14.1"
+  }
+}
