@@ -1,0 +1,17 @@
+[
+  {
+    "city": "london",
+    "temp_c": 10,
+    "temp_f": 50
+  }
+  {
+    "city": "stockholm",
+    "temp_c": 10,
+    "temp_f": 50
+  }
+  {
+    "city": "paris",
+    "temp_c": 10,
+    "temp_f": 50
+  }
+]

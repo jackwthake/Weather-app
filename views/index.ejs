@@ -8,28 +8,65 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div class="jumbotron" style="margin-bottom:0px; color:white; background-color:#2196F3;">
-      <h2 class="text-center" style="font-size:45px; font-weight:450;">Get Current Weather Data From Arround The World.</h2>
-    </div>
-    <div class="container">
-      <div class="row" style="margin-bottom:20px;">
-        <h3 class="text-center text-primary">Enter a city name.</h3>
-      </div>
-      <div class="row form-group form-inline" id="main-div">
-        <input type="text" name="city" id="city" class="form-control" placeholder="City Name">
-        <button id="submit-weather" class="btn btn-primary">Search City</button>
-        <div class="btn-group">
-          <button id="c" class="btn btn-default">&deg;C</button>
-          <button id="f" class="btn btn-default">&deg;F</button>
+    <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#bs-carousel" data-slide-to="1"></li>
+      <li data-target="#bs-carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item slides active">
+        <div class="slide-1"></div>
+        <div class="hero">
+          <hgroup id="slide-1-content">
+            <h1>London</h1>
+            <h3>10&deg; | 50&deg;</h3>
+            <h3>Raining</h3>
+          </hgroup>
         </div>
       </div>
-      <div id="show">
-        <!-- JS changes Values -->
+      <div class="item slides">
+        <div class="slide-2"></div>
+        <div class="hero">
+          <hgroup id="slide-2-content">
+            <h1>Stockholm</h1>
+            <h3>10&deg; | 50&deg;</h3>
+            <h3>Raining</h3>
+          </hgroup>
+        </div>
       </div>
-      <div id="labels" class="text-primary text-center">
-        <!-- JS Handles This -->
+      <div class="item slides">
+        <div class="slide-3"></div>
+        <div class="hero">
+          <hgroup id="slide-3-content">
+            <h1>Paris</h1>
+            <h3>10&deg; | 50&deg;</h3>
+            <h3>Raining</h3>
+          </hgroup>
+        </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="container">
+        <div class="row" style="margin-bottom:20px;">
+          <h3 class="text-center text-primary">Not what you're looking for? Have a search!</h3>
+        </div>
+        <div class="row form-group form-inline" id="main-div">
+          <input type="text" name="city" id="city" class="form-control" placeholder="City Name">
+          <button id="submit-weather" class="btn btn-primary">Search City</button>
+          <div class="btn-group">
+            <button id="c" class="btn btn-default">&deg;C</button>
+            <button id="f" class="btn btn-default">&deg;F</button>
+          </div>
+        </div>
+        <div id="show">
+          <!-- JS changes Values -->
+        </div>
+      </div>
+    </div>
+  </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="scripts/pageManage.js"></script>

@@ -20,6 +20,7 @@ $(document).ready(() => {
           var widget = show(data);
 
           $('#show').html(widget);
+          lastInput = $("#city").val();
           $("#city").val('');
         }
       });
@@ -39,6 +40,7 @@ $(document).ready(() => {
           var widget = show(data);
 
           $('#show').html(widget);
+          lastInput = $("#city").val();
           $("#city").val('');
         }
       });
@@ -78,12 +80,14 @@ $(document).ready(() => {
   });
 });
 
+var capitalizeFirstLetter = function(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 var show = function(data) {
-  return "<h3 class='text-center'><strong>Weather</strong>: " + data.weather[0].main + "." + "</h3>" +
-         "<h3 class='text-center '><strong>Description</strong>: " + data.weather[0].description + "." + "</h3>" +
-         "<h3 class='text-center'><strong>Low</strong>: " + data.main.temp_min + "&deg;" +"</h3>" +
-         "<h3 class='text-center'><strong>Temperature</strong>: " + data.main.temp + "&deg;" + "</h3>" +
-         "<h3 class='text-center'><strong>High</strong>: " + data.main.temp_max + "&deg;" + "</h3>" +
-         "<h3 class='text-center'><strong>Cloudiness</strong>: " + data.clouds.all + "%" + "</h3>" +
-         "<h3 class='text-center'><strong>Atmospheric pressure</strong>: " + data.main.pressure + " hPa" + "</h3>";
+  description = data.weather[0].description;
+  description = capitalizeFirstLetter(description);
+
+  return "<h3 class='text-center'><strong>" + description + "." + "</strong></h3>" +
+         "<h3 class='text-center'><strong>" + data.main.temp_min + "&deg; | " + data.main.temp + "&deg; | " + data.main.temp_max + "&deg;</strong></h3>";
 }

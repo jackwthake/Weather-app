@@ -5,6 +5,7 @@
 }
 
 input[type="text"] {
+  width: 15%; !important
   height: 40px;
   font-size: 20px;
 }
@@ -22,4 +23,111 @@ input[type="text"] {
   height: 40px;
   font-size: 20px;
   font-weight: 400;
+}
+
+.fade-carousel {
+    position: relative;
+    height: 55vh;
+}
+
+.fade-carousel .carousel-inner .item {
+    height: 55vh;
+}
+
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #2196F3;
+    border-color: #2196F3;
+    opacity: .7;
+}
+
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+
+.hero h1 {
+    font-size: 6em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: .5s all ease-in-out .1s;
+       -moz-transition: .5s all ease-in-out .1s;
+        -ms-transition: .5s all ease-in-out .1s;
+         -o-transition: .5s all ease-in-out .1s;
+            transition: .5s all ease-in-out .1s;
+}
+
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 1.5s all ease-in-out .1s;
+       -moz-transition: 1.5s all ease-in-out .1s;
+        -ms-transition: 1.5s all ease-in-out .1s;
+         -o-transition: 1.5s all ease-in-out .1s;
+            transition: 1.5s all ease-in-out .1s;
+}
+
+.btn.btn-lg {
+  padding: 10px 40px;
+}
+
+.btn.btn-hero, .btn.btn-hero:hover, .btn.btn-hero:focus {
+    color: #f5f5f5;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    outline: none;
+    margin: 20px auto;
+}
+
+.fade-carousel .slides .slide-1,
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 55vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background-image: url(/img/london.jpg);
+  background-position: center;
+}
+.fade-carousel .slides .slide-2 {
+  background-image: url(/img/stockholm.jpg);
+  background-position: top;
+}
+.fade-carousel .slides .slide-3 {
+  background-image: url(/img/paris.jpg);
+  background-position: center;
+}
+
+@media screen and (min-width: 980px){
+    .hero { width: 980px; }
+}
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }
+}
+
+body {
+  background-color: #eee;
 }
