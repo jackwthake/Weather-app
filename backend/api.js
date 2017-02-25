@@ -1,4 +1,5 @@
 var request = require('request');
+var fs = require('fs');
 
 exports.port = 8000; // default
 exports.v = false; //verbosity of the apps console
@@ -14,9 +15,26 @@ exports.startup = function() {
 
 exports.update = function(interval) {
   setInterval(() => {
-    if(exports.debug) {
+    if(exports.v) {
       console.log('-- Update Tick -- ' + exports.time());
     }
+    var london_c = exports.getData('london', 'metric');
+    var london_f = exports.getData('london', 'imperial');
+
+    var stockholm_c = exports.getData('stockholm', 'metric');
+    var stockholm_f = exports.getData('stockholm', 'imperial');
+
+    var paris_c = exports.getData('paris', 'metric');
+    var paris_f = exports.getData('paris', 'imperial');
+
+    fs.exists(__dirname + 'data/presets.json', (err, data) => {
+      if(err) {
+        console.log(err)
+      } else {
+        // var obj = JSON.parse(data);
+        console.log(data);
+      }
+    });
   }, interval);
 }
 
@@ -43,7 +61,7 @@ exports.getData = function(city, unit){
   // unit must be either 'metric' => celsius or 'imperial' => fahrenheit.
   var d;
   request({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=" + 'metric' + "APPID=e29180ef5bc7f2c0b9b002c45a316a23",
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=" + unit + "APPID=c8ca329ffed77ed3f76033ee9fc95d5e",
     type: 'GET',
     timeout: 10000,
     followRedirect: true,

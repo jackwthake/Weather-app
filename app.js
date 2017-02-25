@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
-// api.getData('portland');
+// api.getData('portland'); deprecated
 
 // setup / specify routes
 app.get('/', function(req, res) {
@@ -21,16 +21,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/data/presets', function(req, res) {
-  res.send('/data/presets.json')
+  res.sendFile(__dirname + '/public/data/presets.json')
 });
-
-/*
-  NOTE:
-  The Client should request weather data by going:
-  localhost:8000/q={{city name}}
-  then the server goes and searches the city on open weather map
-  and sends the data back to the client.
-*/
 
 app.listen(api.port, () => {
   console.log('Server started at ' + api.time() + ' on localhost:' + api.port);

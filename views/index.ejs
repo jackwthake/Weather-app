@@ -20,8 +20,8 @@
         <div class="hero">
           <hgroup id="slide-1-content">
             <h1>London</h1>
-            <h3>10&deg; | 50&deg;</h3>
-            <h3>Raining</h3>
+            <!-- <h3>10&deg; | 50&deg;</h3> -->
+            <!-- <h3>Raining</h3> -->
           </hgroup>
         </div>
       </div>
@@ -30,8 +30,8 @@
         <div class="hero">
           <hgroup id="slide-2-content">
             <h1>Stockholm</h1>
-            <h3>10&deg; | 50&deg;</h3>
-            <h3>Raining</h3>
+            <!-- <h3>10&deg; | 50&deg;</h3> -->
+            <!-- <h3>Raining</h3> -->
           </hgroup>
         </div>
       </div>
@@ -40,8 +40,8 @@
         <div class="hero">
           <hgroup id="slide-3-content">
             <h1>Paris</h1>
-            <h3>10&deg; | 50&deg;</h3>
-            <h3>Raining</h3>
+            <!-- <h3>10&deg; | 50&deg;</h3> -->
+            <!-- <h3>Raining</h3> -->
           </hgroup>
         </div>
       </div>
@@ -62,13 +62,26 @@
           </div>
         </div>
         <div id="show">
-          <!-- JS changes Values -->
         </div>
       </div>
     </div>
   </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $.ajax({
+        url: '/data/presets',
+        type: 'GET',
+        dataType: 'json',
+        success: (data_) => {
+          console.log(data_);
+          data = data_
+        },
+        error: function(e) {
+          console.log(e);
+        }
+      });
+    </script>
     <script src="scripts/pageManage.js"></script>
   </body>
 </html>
