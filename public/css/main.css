@@ -5,18 +5,9 @@
 }
 
 input[type="text"] {
-  width: 15%; !important
+  width: 15%;
   height: 40px;
   font-size: 20px;
-}
-
-.label, .label-danger {
-  position: absolute;
-  top: 95%;
-  left: 47%;
-  height: 25px;
-  font-size: 15px;
-  font-weight: 400;
 }
 
 #submit-weather {

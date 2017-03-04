@@ -2,14 +2,8 @@ $(document).ready(() => {
   var fahrenheit = true;
   var lastInput = '';
 
-  if(fahrenheit)
-    $('#labels').html('<span class="label label-danger text-center">Fahrenheit</span>');
-  else
-    $('#labels').html('<span class="label label-danger text-center">Celsius</span>');
-
     $('#c').click(() => {
       fahrenheit = false;
-      $('#labels').html('<span class="label label-danger text-center">Celsius</span>');
 
       if(lastInput != '') {
         $.ajax({
@@ -28,7 +22,6 @@ $(document).ready(() => {
 
     $('#f').click(() => {
       fahrenheit = true;
-      $('#labels').html('<span class="label label-danger text-center">Fahrenheit</span>');
 
       if(lastInput != '') {
         $.ajax({
@@ -69,7 +62,6 @@ $(document).ready(() => {
         dataType: 'jsonp',
         success: (data) => {
           var widget = show(data);
-          console.log(data);
 
           $('#show').html(widget);
           lastInput = $("#city").val();
@@ -79,26 +71,9 @@ $(document).ready(() => {
     }
   });
 
-  setInterval(function () {
-    var data;
-    $.ajax({
-      url: '/data/presets',
-      type: 'GET',
-      dataType: 'json',
-      success: (data_) => {
-        console.log(data_);
-        data = data_
-      },
-      error: function(e) {
-        console.log(e);
-      }
-    });
-  }, 60000 * 10); // ten minutes
-
-  //inject html code
-  $('#slide-1-content').html('<h1>London</h1><h3>' + data.london[0].weather + '</h3><h3>' + data.london[0].temp_c + '&deg; | ' + data.london[0].temp_f + '&deg;');
-  $('#slide-2-content').html('<h1>Stockholm</h1><h3>' + data.stockholm[0].weather + '</h3><h3>' + data.stockholm[0].temp_c + '&deg; | ' + data.stockholm[0].temp_f + '&deg;');
-  $('#slide-3-content').html('<h1>Paris</h1><h3>' + data.paris[0].weather + '</h3><h3>' + data.paris[0].temp_c + '&deg; | ' + data.paris[0].temp_f + '&deg;');
+  getPresetData('london', 1);
+  getPresetData('stoockholm', 2);
+  getPresetData('paris', 3);
 });
 
 var capitalizeFirstLetter = function(string) {
@@ -113,4 +88,28 @@ var show = function(data) {
   return "<h3 class='text-center'><strong>" + city + "</strong></h3>" +
          "<h3 class='text-center'><strong>" + description + "." + "</strong></h3>" +
          "<h3 class='text-center'><strong>" + data.main.temp_min + "&deg; | " + data.main.temp + "&deg; | " + data.main.temp_max + "&deg;</strong></h3>";
+}
+
+var getPresetData = function(city, slideNum) {
+  var cityData;
+  $.ajax({
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=metric&APPID=c8ca329ffed77ed3f76033ee9fc95d5e",
+    type: 'GET',
+    dataType: 'json',
+    success: (data) => {
+      showPresetWeather(data, slideNum);
+    }
+  });
+
+  return cityData
+}
+
+var showPresetWeather = function(data, slideNum) {
+  description = data.weather[0].description;
+  city = data.name;
+  description = capitalizeFirstLetter(description);
+  city = capitalizeFirstLetter(city);
+  $('#slide-' + slideNum + '-content').html('<h1>' + city + '</h1>' + 
+                                            '<h3>'+ description +'</h3>' +
+                                            '<h3>'+ data.main.temp_min + '&deg; | <strong>' + data.main.temp + '&deg;</strong> | ' + data.main.temp_min + '&deg;' + '</h3>');
 }
