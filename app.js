@@ -12,8 +12,6 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
-// api.getData('portland'); deprecated
-
 // setup / specify routes
 app.get('/', function(req, res) {
   console.log('-- Server request recieved at ' + api.time() + ' on localhost:' + api.port);

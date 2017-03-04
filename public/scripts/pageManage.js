@@ -2,8 +2,22 @@ $(document).ready(() => {
   var fahrenheit = true;
   var lastInput = '';
 
+  if(fahrenheit) {
+    getPresetData('london', 'imperial', 1);
+    getPresetData('stoockholm', 'imperial', 2);
+    getPresetData('paris', 'imperial', 3);
+  } else {
+    getPresetData('london', 'metric', 1);
+    getPresetData('stoockholm', 'metric', 2);
+    getPresetData('paris', 'metric', 3);      
+  }
+
+  $('#f').addClass('btn-primary')
+
     $('#c').click(() => {
       fahrenheit = false;
+      $('#c').addClass('btn-primary');
+      $('#f').removeClass('btn-primary');
 
       if(lastInput != '') {
         $.ajax({
@@ -18,10 +32,22 @@ $(document).ready(() => {
           }
         });
       }
+
+      if(fahrenheit) {
+        getPresetData('london', 'imperial', 1);
+        getPresetData('stoockholm', 'imperial', 2);
+        getPresetData('paris', 'imperial', 3);
+      } else {
+        getPresetData('london', 'metric', 1);
+        getPresetData('stoockholm', 'metric', 2);
+        getPresetData('paris', 'metric', 3);      
+      }
     });
 
     $('#f').click(() => {
       fahrenheit = true;
+      $('#f').addClass('btn-primary');
+      $('#c').removeClass('btn-primary');
 
       if(lastInput != '') {
         $.ajax({
@@ -35,6 +61,16 @@ $(document).ready(() => {
             $("#city").val('');
           }
         });
+      }
+
+      if(fahrenheit) {
+        getPresetData('london', 'imperial', 1);
+        getPresetData('stoockholm', 'imperial', 2);
+        getPresetData('paris', 'imperial', 3);
+      } else {
+        getPresetData('london', 'metric', 1);
+        getPresetData('stoockholm', 'metric', 2);
+        getPresetData('paris', 'metric', 3);      
       }
     });
 
@@ -50,7 +86,7 @@ $(document).ready(() => {
         success: (data) => {
           var widget = show(data);
 
-          $('#show').html(widget);
+          $('#show').html(widget); 
           lastInput = $("#city").val();
           $("#city").val('');
         }
@@ -71,9 +107,17 @@ $(document).ready(() => {
     }
   });
 
-  getPresetData('london', 1);
-  getPresetData('stoockholm', 2);
-  getPresetData('paris', 3);
+  setInterval(() => {
+    if(fahrenheit) {
+      getPresetData('london', 'imperial', 1);
+      getPresetData('stoockholm', 'imperial', 2);
+      getPresetData('paris', 'imperial', 3);
+    } else {
+      getPresetData('london', 'metric', 1);
+      getPresetData('stoockholm', 'metric', 2);
+      getPresetData('paris', 'metric', 3);      
+    }
+  }, 60000 * 15); // every 15 minutes
 });
 
 var capitalizeFirstLetter = function(string) {
@@ -90,10 +134,10 @@ var show = function(data) {
          "<h3 class='text-center'><strong>" + data.main.temp_min + "&deg; | " + data.main.temp + "&deg; | " + data.main.temp_max + "&deg;</strong></h3>";
 }
 
-var getPresetData = function(city, slideNum) {
+var getPresetData = function(city, tempSys, slideNum) {
   var cityData;
   $.ajax({
-    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=metric&APPID=c8ca329ffed77ed3f76033ee9fc95d5e",
+    url: 'http://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=" + tempSys + "&APPID=c8ca329ffed77ed3f76033ee9fc95d5e",
     type: 'GET',
     dataType: 'json',
     success: (data) => {
