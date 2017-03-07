@@ -6,6 +6,10 @@
     <title>Weather Station</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script scr="scripts/typed.js"></script>
+    <script src="scripts/pageManage.js"></script>
   </head>
   <body>
     <div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
@@ -45,7 +49,7 @@
           <h3 class="text-center text-primary">Not what you're looking for? Have a search!</h3>
         </div>
         <div class="row form-group form-inline" id="main-div">
-          <input type="text" name="city" id="city" class="form-control" placeholder="City Name">
+          <input type="text" id="city" class="form-control" placeholder="">
           <button id="submit-weather" class="btn btn-primary">Search City</button>
           <div class="btn-group">
             <button id="c" class="btn btn-default">&deg;C</button>
@@ -57,8 +61,5 @@
       </div>
     </div>
   </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="scripts/pageManage.js"></script>
   </body>
 </html>
