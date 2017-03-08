@@ -1,10 +1,30 @@
-exports.port = 3000; // default
+var request = require('request');
+
+exports.port = 8000; // default
+exports.v = false; //verbosity of the apps console
 
 exports.startup = function() {
   args = [];
   process.argv.forEach((val, index) => {
     args.push(val);
   });
+
+  processArgs();
+  exports.update(60000 * 10);
+}
+
+exports.update = function(interval) {
+  setInterval(() => {
+    if(exports.v) {
+      console.log('-- Update Tick -- ' + exports.time());
+    }
+  }, interval);
+}
+
+var processArgs = function() {
+  if(exports.find('verbose', args)) {
+    exports.v = true; 
+  }
 
   if(exports.find('port', args)) {
     var p = args[exports.find('port', args)];
