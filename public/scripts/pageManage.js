@@ -1,3 +1,6 @@
+var fahrenheit = true;
+var lastInput = '';
+
 $(function(){
         $("#city").typed({
         strings: [
@@ -21,7 +24,13 @@ $(function(){
           "Los Angeleas",
           "San Diego",
           "Portland",
-          "Seattle"
+          "Seattle",
+          "Rio de Janeiro",
+          "Florence",
+          "Lisbon",
+          "Istanbul",
+          "Lyon",
+          "Vienna"
         ],
         loop: true,
         shuffle: true,
@@ -30,65 +39,7 @@ $(function(){
 });
 
 $(document).ready(() => {
-  var fahrenheit = true;
-  var lastInput = '';
-
-  $("#city").typed({
-        strings: [
-            "Amsterdam", 
-            "Brussels",
-            "Glasgow",
-            "Copenhagen",
-            "Oslo",
-            "Prague",
-            "Genevia",
-            "Bern",
-            "Rome",
-            "Milan",
-        ],
-        // Optionally use an HTML element to grab strings from (must wrap each string in a <p>)
-        stringsElement: null,
-        // typing speed
-        typeSpeed: 120,
-        // time before typing starts
-        startDelay: 0,
-        // backspacing speed
-        backSpeed: 0,
-        // shuffle the strings
-        shuffle: true,
-        // time before backspacing
-        backDelay: 500,
-        // loop
-        loop: true,
-        // false = infinite
-        loopCount: false,
-        // show cursor
-        showCursor: true,
-        // character for cursor
-        cursorChar: "|",
-        // attribute to type (null == text)
-        attr: null,
-        // either html or text
-        contentType: 'html',
-        // call when done callback function
-        callback: function() {},
-        // starting callback function before each string
-        preStringTyped: function() {},
-        //callback for every typed string
-        onStringTyped: function() {},
-        // callback for reset
-        resetCallback: function() {}
-    });
-
-  if(fahrenheit) {
-    getPresetData('london', 'imperial', 1);
-    getPresetData('stoockholm', 'imperial', 2);
-    getPresetData('paris', 'imperial', 3);
-  } else {
-    getPresetData('london', 'metric', 1);
-    getPresetData('stoockholm', 'metric', 2);
-    getPresetData('paris', 'metric', 3);      
-  }
+  updatePresetData();
 
   $('#f').addClass('btn-primary')
 
@@ -111,15 +62,7 @@ $(document).ready(() => {
         });
       }
 
-      if(fahrenheit) {
-        getPresetData('london', 'imperial', 1);
-        getPresetData('stoockholm', 'imperial', 2);
-        getPresetData('paris', 'imperial', 3);
-      } else {
-        getPresetData('london', 'metric', 1);
-        getPresetData('stoockholm', 'metric', 2);
-        getPresetData('paris', 'metric', 3);      
-      }
+      updatePresetData();
     });
 
     $('#f').click(() => {
@@ -141,15 +84,7 @@ $(document).ready(() => {
         });
       }
 
-      if(fahrenheit) {
-        getPresetData('london', 'imperial', 1);
-        getPresetData('stoockholm', 'imperial', 2);
-        getPresetData('paris', 'imperial', 3);
-      } else {
-        getPresetData('london', 'metric', 1);
-        getPresetData('stoockholm', 'metric', 2);
-        getPresetData('paris', 'metric', 3);      
-      }
+      updatePresetData();
     });
 
 
@@ -186,15 +121,7 @@ $(document).ready(() => {
   });
 
   setInterval(() => {
-    if(fahrenheit) {
-      getPresetData('london', 'imperial', 1);
-      getPresetData('stoockholm', 'imperial', 2);
-      getPresetData('paris', 'imperial', 3);
-    } else {
-      getPresetData('london', 'metric', 1);
-      getPresetData('stoockholm', 'metric', 2);
-      getPresetData('paris', 'metric', 3);      
-    }
+    updatePresetData();
   }, 60000 * 15); // every 15 minutes
 });
 
@@ -224,6 +151,24 @@ var getPresetData = function(city, tempSys, slideNum) {
   });
 }
 
+var updatePresetData = function() {
+  if(fahrenheit) {
+    getPresetData('london', 'imperial', 1);
+    getPresetData('stoockholm', 'imperial', 2);
+    getPresetData('paris', 'imperial', 3);
+    getPresetData('singapore', 'imperial', 4);
+    getPresetData('dubai', 'imperial', 5);
+    getPresetData('new york', 'imperial', 6);
+  } else {
+    getPresetData('london', 'metric', 1);
+    getPresetData('stoockholm', 'metric', 2);
+    getPresetData('paris', 'metric', 3);
+    getPresetData('singapore', 'metric', 4);
+    getPresetData('dubai', 'metric', 5);   
+    getPresetData('new york', 'metric', 6);   
+  }
+}
+
 var showPresetWeather = function(data, slideNum) {
   description = data.weather[0].description;
   city = data.name;
@@ -236,24 +181,6 @@ var showPresetWeather = function(data, slideNum) {
 }
 
 // Tyepd.js | Copyright (c) 2014 Matt Boldt | www.mattboldt.com
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
 
 !function($){
 

@@ -106,7 +106,10 @@ input[type="text"] {
 
 .fade-carousel .slides .slide-1,
 .fade-carousel .slides .slide-2,
-.fade-carousel .slides .slide-3 {
+.fade-carousel .slides .slide-3,
+.fade-carousel .slides .slide-4,
+.fade-carousel .slides .slide-5,
+.fade-carousel .slides .slide-6 {
   height: 60vh;
   background-size: cover;
   background-position: center center;
@@ -122,6 +125,21 @@ input[type="text"] {
 }
 .fade-carousel .slides .slide-3 {
   background-image: url(/img/paris.jpg);
+  background-position: center;
+}
+
+.fade-carousel .slides .slide-4 {
+  background-image: url(/img/singapore.jpg);
+  background-position: center;
+}
+
+.fade-carousel .slides .slide-5 {
+  background-image: url(/img/dubai.jpg);
+  background-position: center;
+}
+
+.fade-carousel .slides .slide-6 {
+  background-image: url(/img/new-york.jpg);
   background-position: center;
 }
 
